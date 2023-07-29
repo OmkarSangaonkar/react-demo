@@ -1,12 +1,22 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import "./App.css";
-import Header from "./components/Header";
-import Question from "./components/Question";
 
 function App() {
+  const [userData, setData] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://node-demo-weld.vercel.app/").then((response) => {
+      console.log(response);
+      setData(response.data);
+    });
+  });
+
   return (
     <div className="App">
-      <Header />
-      <Question />
+      {userData.map((data) => {
+        return <div>{data.type}</div>;
+      })}
     </div>
   );
 }
