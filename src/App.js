@@ -3,20 +3,18 @@ import axios from "axios";
 import "./App.css";
 
 function App() {
-  const [userData, setData] = useState([]);
+  const [userData, setUserData] = useState({}); // Initialize as an object
 
   useEffect(() => {
-    axios.get("https://node-demo-weld.vercel.app/").then((response) => {
-      console.log(response);
-      setData(response.data);
+    axios.get("http://localhost:5555/").then((response) => {
+      console.log("Server Response:", response.data);
+      setUserData(response.data); // Set the JSON object in state
     });
-  });
+  }, []);
 
   return (
     <div className="App">
-      {userData.map((data) => {
-        return <div>{data.type}</div>;
-      })}
+      <h1>{userData.name}</h1>
     </div>
   );
 }
