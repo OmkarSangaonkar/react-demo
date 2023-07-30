@@ -5,12 +5,12 @@ import "./App.css";
 function App() {
   const [userData, setUserData] = useState({}); // Initialize as an object
 
-  // useEffect(() => {
-  //   axios.get("https://node-demo-weld.vercel.app/").then((response) => {
-  //     console.log("Server Response:", response.data);
-  //     setUserData(response.data); // Set the JSON object in state
-  //   });
-  // }, []);
+  useEffect(() => {
+    axios.get("https://node-demo-weld.vercel.app/").then((response) => {
+      console.log("Server Response:", response.data);
+      setUserData(response.data); // Set the JSON object in state
+    });
+  }, []);
 
   return (
     <div className="App">
